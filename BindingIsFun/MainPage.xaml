@@ -4,12 +4,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <ScrollView>
-        <VerticalStackLayout Margin="15">
 
+        <VerticalStackLayout Margin="15">
+            <!--  הטקסט והתמונה  -->
             <VerticalStackLayout Margin="15,55"
                                  VerticalOptions="Center"
                                  HorizontalOptions="Center"
                                  BindingContext="{Binding Source={x:Reference scaleSlider}}">
+
+
                 <Label FontSize="Large"
                        Text="קשה יש רק בלחם"
                        VerticalOptions="Center"
@@ -53,6 +56,8 @@
                        FontSize="20"
                        HorizontalTextAlignment="Center" />
                 <Slider Grid.Row="1"
+                        ThumbColor="Red"
+                        ThumbImageSource="slider.png"
                         Grid.Column="1"
                         x:Name="rotationSlider"
                         Minimum="0"

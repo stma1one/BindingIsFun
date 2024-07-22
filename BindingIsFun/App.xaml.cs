@@ -6,7 +6,8 @@
         {
             InitializeComponent();
 
-            MainPage = new PokemonDetailsPage();
+            MainPage = new MainPage();//Binding between controls
+            //MainPage=new PokemonDetailsPage();//Binding to an object
         }
     }
 }

@@ -58,6 +58,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\pokemon.png" />
+	  <None Remove="Resources\Images\slider.png" />
 	</ItemGroup>
 
 	<ItemGroup>
