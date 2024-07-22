@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="BindingIsFun.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ScrollView>
+        <VerticalStackLayout Margin="15">
+
+            <VerticalStackLayout Margin="15,55"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 BindingContext="{Binding Source={x:Reference scaleSlider}}">
+                <Label FontSize="Large"
+                       Text="קשה יש רק בלחם"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Scale="{Binding Value}"
+                       Rotation="{Binding Source={x:Reference rotationSlider}, Path=Value}" />
+
+                <Image x:Name="botImg"
+                       Source="dotnet_bot.png"
+                       Aspect="AspectFit"
+                       HeightRequest="{OnPlatform WinUI=300}"
+                       WidthRequest="{OnPlatform WinUI=300}"
+                       Opacity="{Binding Value, Source={x:Reference opacitySlider}, Mode=TwoWay}" />
+
+
+            </VerticalStackLayout>
+            <!--  Grid 3*2 first column is name second is the slider  -->
+            <Grid ColumnDefinitions="*,4*" RowDefinitions="*,*,*">
+                <!--  Scale Slider  -->
+                <Label Text="הגדלה"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center" />
+                <Slider Grid.Column="1"
+                        x:Name="scaleSlider"
+                        Value="0"
+                        Minimum="0"
+                        Maximum="5"
+                        MinimumTrackColor="#78EE10"
+                        MaximumTrackColor="#F01616" />
+                <Label BindingContext="{Binding Source={x:Reference scaleSlider}}"
+                       Grid.Column="1"
+                       Margin="0,15,0,0"
+                       HorizontalTextAlignment="Center"
+                       Padding="10"
+                       Text="{Binding Value, StringFormat='{0:F1}'}" />
+
+
+                <!--  Rotation Slider  -->
+                <Label Grid.Row="1"
+                       Text="סיבוב"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center" />
+                <Slider Grid.Row="1"
+                        Grid.Column="1"
+                        x:Name="rotationSlider"
+                        Minimum="0"
+                        Maximum="360"
+                        Value="1" />
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Margin="0,15,0,0"
+                       HorizontalTextAlignment="Center"
+                       Padding="10"
+                       Text="{Binding Source={x:Reference rotationSlider}, Path=Value, StringFormat='{0:F0}'}" />
+
+                <!--  Opacity Slider  -->
+                <Label Grid.Row="2"
+                       Text="שקיפות"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center" />
+                <Slider Grid.Row="2"
+                        Grid.Column="1"
+                        x:Name="opacitySlider"
+                        Minimum="0"
+                        Maximum="1"
+                        Value="1" />
+                <Label Grid.Row="2"
+                       Grid.Column="1"
+                       Margin="0,15,0,0"
+                       HorizontalTextAlignment="Center"
+                       Padding="10"
+                       Text="{Binding Value, Source={x:Reference opacitySlider}, StringFormat='{0:0.#%}'}" />
+
+            </Grid>
+
+            <Button WidthRequest="{OnIdiom Tablet=300}"
+                    Text="שנה שקיפות"
+                    Clicked="OpacityChangeOnClick" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
